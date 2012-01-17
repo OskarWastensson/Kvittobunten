@@ -1,0 +1,9 @@
+<?php
+
+require user_lib.php;
+
+$user = new user();
+$user->loggedIn or header('location: ' . $_SERVER['SERVER_NAME'] . '/login.php');
+
+?>
+<

@@ -1,0 +1,34 @@
+/* screen.css - default layout */
+
+body {
+	background-color: #eee;
+	font-family: 'Open Sans', 'Arial', 'Verdana', 'sans-serif';
+}
+
+#main_wrapper {
+	margin: auto;
+	max-width: 1000px;
+}
+
+#content_wrapper {
+	width: 500px;
+	float: right;
+}
+
+#headbar, #content {
+	margin: 5px;
+	padding: 5px;
+	border: solid 1px #999;
+	background-color: #fff;
+
+}
+
+#side1 {
+	float: right;
+	width: 250px;
+}
+
+#side2 {
+	float:left;
+	width: 250px;
+}
