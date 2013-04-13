@@ -7,28 +7,16 @@ body {
 
 #main_wrapper {
 	margin: auto;
-	max-width: 1000px;
-}
-
-#content_wrapper {
-	width: 500px;
-	float: right;
-}
-
-#headbar, #content {
-	margin: 5px;
-	padding: 5px;
-	border: solid 1px #999;
-	background-color: #fff;
 
 }
 
-#side1 {
-	float: right;
-	width: 250px;
+.main-column {
+	max-width: 500px;
+  padding: 20px;
+  margin: auto;
 }
 
-#side2 {
-	float:left;
-	width: 250px;
+.main-column .ui-body {
+  padding: 0;
 }
+

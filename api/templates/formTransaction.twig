@@ -1,0 +1,25 @@
+<form class='transactionForm active' action="javascript:void(null)" method="post" >
+    <input type='date' name='date' id='exec_date' value='{{ dateSuggestion }}' class='ui-input-text'>
+    <select name='account' size='' id='account'>
+    {% for account in accounts %}
+      <option value='{{ account.id }}'>
+      {{ account.name }}</option>
+    {% endfor %} 
+    </select>
+    <input 
+      type='text' 
+      name='amount'
+      id='amount'
+      class='currency'
+      >
+    <input 
+      type='submit'
+      name='submit'
+      value="Spara"
+      class="ui-btn"
+      data-role="button"
+      data-icon="check"
+      data-iconpos="right"
+      data-theme="b"
+      >
+</form>

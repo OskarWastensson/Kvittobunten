@@ -1,6 +1,18 @@
-function render_transactions(data) {
+	$(document).ready(function() {
+		// Fetch accounts
+		$.post('api/', { rid: 'accounts' }, function(data) {
+			if(data.error == 'empty') {
+				delete data.error;
+				$("#content").html(budget_form(data));
+			} else {
+				render_transactions(data);
+			}
+		}, 'json');
+	});
+  
+  function render_transactions(data) {
 			// List transactions
-		$.post('ajax_responders.php', { rid: "transactions" }, function(data) {
+		$.post('api/', { rid: "transactions" }, function(data) {
 			if(data.error == 'empty') {
 				transactions = "";				
 			} else {
@@ -47,10 +59,6 @@ function send_account_form() {
 
 // Render html for budget and settings form
 function budget_form(accounts) {
-	html = "<h1>Budget</h1>\n";
-	html += "<form id ='budget_form'>\n";
-	html += "<table>\n";
-
 	subaccount_now = false;
 	for(i in accounts) {
 		subaccount_prev = subaccount_now;
@@ -74,12 +82,6 @@ function budget_form(accounts) {
 		}
 		
 	}
-	
-	html += "<td colspan='3'>\n";
-	html += "<input type='submit' value='Spara'>";
-	html += "</td>\n";	
-	
-	html += "</table></form>\n";
 
 	return html;
 }

@@ -1,0 +1,16 @@
+	<h1>Budget</h1>
+  <form class='budget_form'>
+  <table>
+  {% for account in accounts %}
+      <tr>
+        <td>{{ account.id }}</td>
+        <td><input type='text' value='{{ account.name }}' class='name row{{ account.id }}'></td>
+        <td><input type='text' value='{{ account.budget }}' class='budget row{{ account.id }}'></td>
+        
+      </tr>
+  {% endfor %}
+  <td colspan='3'>
+  <input type='submit' value='Spara'>
+  </td>
+  </table>
+  </form>

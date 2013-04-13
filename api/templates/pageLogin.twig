@@ -1,0 +1,72 @@
+{{ header|raw }}
+<body>
+  <div class="page" data-role="page">
+    <div data-role="header">
+        <h1>Welcome</h1>
+      </div>
+      <div class='content' data-role="content">
+
+        <div class="main-column" >
+        <div data-role="collapsible" class="form" data-collapsed="false" data-theme="b">
+          <h2>Logga in</h2>
+          <div>
+            <form action="javascript:void(0)" name='login' class="loginForm">
+              <p><em>Fyll i användarnamn och lösenord.</em></p>
+              <label for="uname" class="ui-hidden-accessible">Användarnamn</label>
+              <input 
+                id='uname' 
+                name='uname' 
+                type='text' 
+                maxlength='16' 
+                placeholder="Användarnamn" />
+              <label for="pwd" class="ui-hidden-accessible">Lösenord</label>
+              <input
+                id="pwd"
+                name='pwd'
+                type='password'
+                maxlength='12'
+                placeholder="Lösenord"/>
+              <input type='hidden' name='login' value='1' />
+              <input data-theme="b" type='submit' class="submit" value='Logga in' />
+            </form>
+          </div>
+        </div>
+        <div data-role="collapsible" class="form" data-theme="e">
+
+          <h2>Registrera dig</h2>
+          <p><em>Vill du pröva? Välj ett användarnamn och ett lösenord, så kan du börja kontroll över 
+        dina pengar på en gång!</em></p>
+          <form action='javascript:void(0)' class=registerForm" name='reg'>
+          <label for="user_name" class="ui-hidden-accessible">Användarnamn</label>
+          <input 
+            name='user_name' 
+            id="user_name" 
+            type='text' 
+            placeholder="Användarnamn" 
+            maxlength='16' />
+
+          <label for="reg_pwd" class="ui-hidden-accessible">Lösenord</label>
+          <input 
+            name='pwd' 
+            id="pwd" 
+            type='password'
+            maxlength='12'
+            placeholder="Lösenord"/>
+
+          <label for="pwd2" class="ui-hidden-accessible">Upprepa Lösenord</label>
+          <input 
+            name='pwd2'
+            id="pwd2"
+            type='password'
+            maxlength='12'
+            placeholder="Upprepa lösenord."/>
+
+          <input type='hidden' name='reg' value='1' />
+          <input data-theme="e" type='submit' value='Registrera' />
+
+
+        </div>
+        </div>
+        </div>
+    </div>
+</body>

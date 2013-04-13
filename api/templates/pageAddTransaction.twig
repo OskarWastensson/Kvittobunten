@@ -1,0 +1,22 @@
+{{ header|raw }}
+<body>
+  <div class="page" data-role="page">
+      <div data-role="header">
+        <h1>Add transaction</h1>
+      </div>
+      <div class='content' data-role="content">
+        {{ formTransaction|raw }}
+        <table>
+          <thead>Added today</thead>
+          <tbody class="transactionTable">
+          {% for transaction in transactions %}
+            <tr>{{ transaction|raw }}</tr>
+          {% endfor %}
+        </tbody>
+        </table>
+      </div>
+      <div class='footer' data-role="footer">
+        {{ footer|raw }}
+      </div>
+    </div>
+</body>
