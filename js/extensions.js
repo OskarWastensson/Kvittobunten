@@ -59,7 +59,7 @@ $.fn.extend({
     case 'page':
       // Page load function
       self[funcName] = function () {
-        $.mobile.changePage(url, { transition: "fade" });
+        $.mobile.changePage(url, { transition: "slide" });
         return self;
       };
       break;

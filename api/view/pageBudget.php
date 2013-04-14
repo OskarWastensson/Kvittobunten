@@ -5,8 +5,9 @@
  */
 
  class pageBudget extends view {
-   protected function preprocess() {
-     $footer = new footer($this->user);
-     $this->data["footer"] = $footer->show(get_class($this));
-  }
+   protected $single = true;
+   
+   protected $components = Array(
+     'footer',
+     'header');
  }
