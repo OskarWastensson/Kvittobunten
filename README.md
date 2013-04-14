@@ -14,10 +14,10 @@ There is no error handling. There are no installation tools.
 
 Roadmap
 -------
-I'm developing along this trajectory: (stars are done)
-- API *
-- Basic Auth *
-- Add transaction procedure *
+I'm more or less developing along this trajectory: (italics are done)
+- *API*
+- *Basic Auth*
+- *Add transaction procedure*
 - Budget settings procedure
 - Budget related cron jobs
 - Records browser
