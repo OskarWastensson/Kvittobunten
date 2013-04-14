@@ -1,7 +1,7 @@
 <?php
 
 /*
- * Just a list of the accounts available to logged in user
+ * Accounts model
  */
 
 class accounts extends Model {

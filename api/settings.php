@@ -2,6 +2,9 @@
 
 /*
  * Settings file
+ * 
+ *  -  should be excluded from version management
+ * 
  */
 
 define('db_host', 'localhost');

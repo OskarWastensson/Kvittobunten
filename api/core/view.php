@@ -1,9 +1,8 @@
 <?php
 
 /*
-  View base class
+  Base class for view definitions 
  */
-
 
 define('AS_JSON', TRUE);
 define('AS_ARRAY', FALSE);

@@ -1,6 +1,12 @@
-// Adds an interface for interaction with the api to a jquery element
+//
+// @FILE
+// - Jquery extensions specific to Kvittobunten
+// 
+// Author: oskar@wastensson.se
+//
 
 $.fn.extend({
+  // Marks content in an input field (not currently used)
   setCursorPosition : function (pos) {
     if ($(this).get(0).setSelectionRange) {
       $(this).get(0).setSelectionRange(pos, pos);
@@ -12,15 +18,21 @@ $.fn.extend({
       range.select();
     }
   },
+  // Clears the input fields of a form
   clearForm : function () {
     $(this).find('input, option:selected').each(function (index, element) {
       var input = $(element);
       input.val('');
     });
-  }, 
+    return this;
+  },
+  // Adds a function that provides (ajax) interaction with 
+  // the api to a jquery element.
   addInterface : function(funcName, url, type) {
     var func, self = this;
 
+    // Helper (private scope) function that converts 
+    // form input values to parameters
     function getDataFromInputs() {
       self.find('input, select').each(function (index, element) {
         var input = $(element),
@@ -34,21 +46,25 @@ $.fn.extend({
         }
       });
     }
-
+    
+    // Define paramaters as object if not already set
     if (!self.parameters) {
       self.parameters = {};
     }
-
+    
+    // Convert to non-clean url
     url = 'index.php?q=' + url;
 
     switch (type) {
     case 'page':
+      // Page load function
       self[funcName] = function () {
         $.mobile.changePage(url, { transition: "fade" });
         return self;
       };
       break;
     case 'element':
+      // Fetch html element
       self[funcName] = function (success) {
         $.get(url, self.parameters, function (reply) {
           if (!reply.error) {
@@ -57,12 +73,13 @@ $.fn.extend({
               success();
             }
           }
-          // error handling
+          // @TODO: error handling
         }, 'html');
         return self;
       };
       break;
     case 'package':
+      // Fetch data, twig template and rendered element
       self[funcName] = function (success) {
         $.get(url, self.parameters, function (reply) {
           if (!reply.error) {
@@ -73,12 +90,13 @@ $.fn.extend({
               success(reply);
             }
           }
-          // error handling
+          // @TODO: error handling
         }, 'json');
         return self;
       };
       break;
     case 'refresh':
+      // Fetch data and re-render template
       self[funcName] = function (success) {
         $.get(url, function (reply) {
           if (!reply.error) {
@@ -88,12 +106,13 @@ $.fn.extend({
               success();
             }
           }
-          // error handling
+          // @TODO: error handling
         });
         return self;
       };
       break;
     case 'template':
+      // Fetch template
       self[funcName] = function (success) {
         $.get(url, function(reply) {
           if (!reply.error) {
@@ -103,12 +122,13 @@ $.fn.extend({
               success();
             }
           }
-          // error handling
+          // @TOOD: error handling
         });
         return self;
       };
       break;
     case 'create':
+      // Create a new record from form data 
       self[funcName] = function (success) {
         getDataFromInputs();
         $.post(url, self.parameters, function(reply) {
@@ -116,12 +136,14 @@ $.fn.extend({
             if (success) {
               success(reply);
             }
+            // @TODO: error handling
           }
         }, 'json');
         return self;
       };
       break;
     case 'update':
+      // Update an existing record from form data
       self[funcName] = function (success) {
         getDataFromInputs();
         $.ajax(url, {
@@ -136,10 +158,12 @@ $.fn.extend({
             }
           }
         });
+        // @TODO: error handling
         return self;
       };
       break;
     case 'destroy':
+      // Delete a record
       self[funcName] = function (success) {
         $.ajax(url, {
           type: "delete",
@@ -151,10 +175,12 @@ $.fn.extend({
             }
           }
         });
+        // @TODO: error handling
         return self;
       };
       break;
     default:
+      // @TODO: error handling
     }
     return self;
   }

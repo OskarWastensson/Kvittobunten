@@ -1,12 +1,12 @@
 <?php
-
 /*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
+ * Router class
+ *   - Routes browser requests into the api
  */
 
-define('ERROR_USER_ACCESS', 'No access ');
-define('ERROE_ILLEGAL_METHOD', 1);
+define('ERROR_USER_ACCESS', 0);
+define('ERROR_ILLEGAL_METHOD', 1);
+// @TODO: Error codes, error handling
 
 
 class Router {
@@ -56,8 +56,8 @@ class Router {
         return $parameters;
         break;
       case 'GET':
-              
         return Array('id' => isset($_GET['id']) ? $_GET['id'] : NULL);
+        break;
       default:
         return Array();
     }

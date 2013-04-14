@@ -10,6 +10,7 @@ require_once 'api/settings.php';
 // Enable autoloading
 spl_autoload_register('load');
 
+// Autoloader function
 function load($className) {
   $folders = Array ('core', 'view', 'model');
   foreach($folders as $folder) {

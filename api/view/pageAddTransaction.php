@@ -1,7 +1,6 @@
 <?php
-
 /*
- * Page for adding transactions
+ * View definition for page for adding transactions
  */
 
  class pageAddTransaction extends view {

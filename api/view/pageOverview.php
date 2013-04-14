@@ -1,8 +1,7 @@
 <?php
 
 /*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
+ * View definition for monthly overview page
  */
 
  class pageOverview extends view {

@@ -1,10 +1,11 @@
-/* 
-
- */
+// @FILE
+//   - Events and behaviours for Kvittobunten
+//
+// Author: oskar@wastensson.se
 
 $(document).bind("pageinit", function () {
 
-  // Pages
+  // Define page loads
   var doc = $(document)
     .addInterface('pageLogin', 'pageLogin', 'page')
     .addInterface('pageBudget', 'pageBudget', 'page')
@@ -17,18 +18,16 @@ $(document).bind("pageinit", function () {
     event.preventDefault();
     doc.pageOverview();
   });
-   
   $('.linkAddTransaction').bind('click', function (event, ui) {
     event.preventDefault();
     doc.pageAddTransaction();
-   });
-
-   $('.linkBudget').bind('click', function (event, ui) {
+  });
+  $('.linkBudget').bind('click', function (event, ui) {
     event.preventDefault();
     doc.pageBudget();
-   });
+  });
   
-  // Currency
+  // Currency input
   $('.currency')
     .bind('blur', function (event, ui) {
       // @TODO: These should be options
@@ -49,8 +48,7 @@ $(document).bind("pageinit", function () {
             newRow.parameters = {"id": reply.id};
             newRow.addInterface('get', 'transaction', 'element');
             newRow.get(function() {
-              $('.transactionTable').prepend(newRow);
-              
+              $('.transactionTable').prepend(newRow);      
             });
             TransactionForm.clearForm();
           }

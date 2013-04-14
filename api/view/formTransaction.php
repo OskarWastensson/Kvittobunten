@@ -1,9 +1,9 @@
 <?php
 
 /*
- * 
- *  
+ * View definition for transaction form
  */
+
  class formTransaction extends view {
    protected $modelName = 'transaction';
    protected $single = true;

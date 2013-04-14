@@ -1,7 +1,7 @@
 <?php
 
 /*
- * 
+ * Base class for models
  */
 
 abstract class Model extends DB {
@@ -9,17 +9,20 @@ abstract class Model extends DB {
   public $vars = Array ();
   
   function __construct($user = NULL) {
+    // If a user object i provided - connect it to the models user
     if(is_object($user)) {
       $this->user = &$user;
       $this->uid = &$user->id;
     }
+    // Database connectivity
     return parent::__construct();
   }
-  
   
   /*
    * Public (CRUD) functions
    */
+  
+  // Fetches data from id
   public function read($args) {
     $id = $args['id'];
     $result = $this->query($this->selectQuery($id));
@@ -31,11 +34,13 @@ abstract class Model extends DB {
     }
   }
   
+  // Fetches data from a where clause
   public function search($whereClause = "") {
     $result = $this->query($this->searchQuery($whereClause));
     $this->data = $this->getRows($result);
   }
   
+  // Inserts data 
   public function create($vars) {
     foreach(array_keys($this->vars) as $varName) {
       if(isset($vars[$varName])) {
@@ -45,10 +50,12 @@ abstract class Model extends DB {
     return json_encode($this->insert(array($save)));
   }
   
+  // Deletes data
   public function delete($id) {
     $this->query($this->deleteQuery($id));
   }
   
+  // Updates data (might not be needed)
   public function update($vars, $id) {
     foreach($vars as $varName) {
       if(in_array($varName, array_keys($this->vars))) {
@@ -62,6 +69,7 @@ abstract class Model extends DB {
    * Helper functions
    */
   
+  // Makes a prepares statement replace query to the database
   function insert($values) {
     // Always add logged in user to data
     foreach($values as &$row) {
@@ -121,7 +129,7 @@ abstract class Model extends DB {
     return Array('success' => 1, 'id' => $this->insert_id);
   }
   
-
+  // Formats result into data
   protected function getRows($result) {
     if($result) {
       $data = Array();
@@ -135,7 +143,7 @@ abstract class Model extends DB {
   }
   
   /*
-   * Standard quries
+   * Standard queries - should mostly be overridden by model classes.
    */
 
   protected function selectQuery($id) {
