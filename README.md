@@ -7,11 +7,13 @@ Or rather - that's the intended function of the app, but it's purpose is to expl
 practice designing an MVC CRUD API and thinking about best practises when using jquery. I do this in my daily 
 avarege 10 min of spare time.
 
-*Current staus*
+Current staus
+-------------
 It is currently possible to register and make records. But not to review status, history or browse records. 
 There is no error handling. There are no installation tools.
 
-*Roadmap*
+Roadmap
+-------
 I'm developing along this trajectory: (stars are done)
 - API *
 - Basic Auth *
